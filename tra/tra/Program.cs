@@ -41,6 +41,7 @@ namespace tra
                 tCode = c;
                 date = d;
                 amount = a;
+            /////////////
             }
             public double getAmount()
             {
@@ -48,12 +49,11 @@ namespace tra
             }
             public void showTransaction()
             {
-                Console.WriteLine("Transaction: {0}", tCode);
+                Console.WriteLine("Transaction : {0}", tCode);
                 Console.WriteLine("Date: {0}", date);
                 Console.WriteLine("Amount: {0}", getAmount());
             }
         }
-        
 }
    
 
