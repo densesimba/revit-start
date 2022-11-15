@@ -1,0 +1,7 @@
+C:\Users\meeting\source\repos\tra\tra\bin\Debug\tra.exe.config
+C:\Users\meeting\source\repos\tra\tra\bin\Debug\tra.exe
+C:\Users\meeting\source\repos\tra\tra\bin\Debug\tra.pdb
+C:\Users\meeting\source\repos\tra\tra\obj\Debug\tra.csproj.AssemblyReference.cache
+C:\Users\meeting\source\repos\tra\tra\obj\Debug\tra.csproj.CoreCompileInputs.cache
+C:\Users\meeting\source\repos\tra\tra\obj\Debug\tra.exe
+C:\Users\meeting\source\repos\tra\tra\obj\Debug\tra.pdb
