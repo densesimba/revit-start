@@ -41,7 +41,7 @@ namespace tra
                 tCode = c;
                 date = d;
                 amount = a;
-            /////////////
+            ///////////// test
             }
             public double getAmount()
             {
