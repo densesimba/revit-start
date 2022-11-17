@@ -5,3 +5,13 @@ C:\Users\meeting\source\repos\tra\tra\obj\Debug\tra.csproj.AssemblyReference.cac
 C:\Users\meeting\source\repos\tra\tra\obj\Debug\tra.csproj.CoreCompileInputs.cache
 C:\Users\meeting\source\repos\tra\tra\obj\Debug\tra.exe
 C:\Users\meeting\source\repos\tra\tra\obj\Debug\tra.pdb
+D:\Deni\ecfsrc\revit-start\tra\tra\bin\Debug\tra.exe.config
+D:\Deni\ecfsrc\revit-start\tra\tra\bin\Debug\tra.exe
+D:\Deni\ecfsrc\revit-start\tra\tra\bin\Debug\tra.pdb
+D:\Deni\ecfsrc\revit-start\tra\tra\obj\Debug\tra.csproj.CoreCompileInputs.cache
+D:\Deni\ecfsrc\revit-start\tra\tra\obj\Debug\tra.exe
+D:\Deni\ecfsrc\revit-start\tra\tra\obj\Debug\tra.pdb
+D:\Deni\ecfsrc\revit-start\tra\tra\bin\Debug\Newtonsoft.Json.dll
+D:\Deni\ecfsrc\revit-start\tra\tra\bin\Debug\Newtonsoft.Json.xml
+D:\Deni\ecfsrc\revit-start\tra\tra\obj\Debug\tra.csproj.CopyComplete
+D:\Deni\ecfsrc\revit-start\tra\tra\obj\Debug\tra.csproj.AssemblyReference.cache
