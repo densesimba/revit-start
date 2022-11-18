@@ -224,7 +224,7 @@ namespace tra
             }
         }
 
-        public string valName(string str)
+        public string ValName(string str)
         {
             string input;
             do
@@ -238,7 +238,7 @@ namespace tra
             return input;
         }
 
-        public string valNumber(string str)
+        public string ValNumber(string str)
         {
 
             string input;
@@ -273,21 +273,18 @@ namespace tra
                 newRoom.index = rooms.Keys.Max() + 1;
             }
 
-
-
-
             Console.WriteLine("Id- ul este {0} :", newRoom.index);
 
-            input = valName("Name");
+            input = ValName("Name");
             newRoom.Name = input;
 
-            input = valNumber("LocationX");
+            input = ValNumber("LocationX");
             newRoom.LocationX = float.Parse(input, CultureInfo.InvariantCulture.NumberFormat);
-            input = valNumber("LocationY");
+            input = ValNumber("LocationY");
             newRoom.LocationY = float.Parse(input, CultureInfo.InvariantCulture.NumberFormat);
-            input = valNumber("LengthX");
+            input = ValNumber("LengthX");
             newRoom.LengthX = float.Parse(input, CultureInfo.InvariantCulture.NumberFormat);
-            input = valNumber("LengthY");
+            input = ValNumber("LengthY");
             newRoom.LengthY = float.Parse(input, CultureInfo.InvariantCulture.NumberFormat);
 
 
@@ -313,7 +310,6 @@ namespace tra
 
                 }
                 Console.WriteLine();
-
             }
         }
 
@@ -390,7 +386,6 @@ namespace tra
                 Console.WriteLine("ID = {0}, Nume = {1}", room.Key, room.Value.Name);
                 Console.WriteLine();
             }
-
         }
 
         public void SearchbyName(string name)
@@ -426,16 +421,16 @@ namespace tra
 
             string input;
 
-            input = valName("Name");
+            input = ValName("Name");
             newRoom.Name = input;
 
-            input = valNumber("LocationX");
+            input = ValNumber("LocationX");
             newRoom.LocationX = float.Parse(input, CultureInfo.InvariantCulture.NumberFormat);
-            input = valNumber("LocationY");
+            input = ValNumber("LocationY");
             newRoom.LocationY = float.Parse(input, CultureInfo.InvariantCulture.NumberFormat);
-            input = valNumber("LengthX");
+            input = ValNumber("LengthX");
             newRoom.LengthX = float.Parse(input, CultureInfo.InvariantCulture.NumberFormat);
-            input = valNumber("LengthY");
+            input = ValNumber("LengthY");
             newRoom.LengthY = float.Parse(input, CultureInfo.InvariantCulture.NumberFormat);
 
             var indexSearchedVal = rooms.Where(r => r.Key == indexUpdate);
