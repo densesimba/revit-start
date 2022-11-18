@@ -19,10 +19,8 @@ namespace tra
 
         static void Main(string[] args)
         {
-
             Program p = new Program();
            
-
             p.Meniu();
 
         }
@@ -33,7 +31,6 @@ namespace tra
 
             while (true)
             {
-
                 Console.WriteLine("\n\nC . Creare incapere");
                 Console.WriteLine("A . Afisare incaperi, in ordinea introducerii");
                 Console.WriteLine("O - Afisare incaperi, ordonate dupa nume");
@@ -45,12 +42,9 @@ namespace tra
                 Console.WriteLine("I - Info cale aplicatie, numar elemente dictionar, indexul ultimei incaperi ");
                 Console.WriteLine("W. Salvare dictionar intr-un fisier .json");
                 Console.WriteLine("L.Incarcare dictionar din .json\n\n");
-                Console.WriteLine("Camere : {0} ", rooms.Keys.Count.ToString());
+                Console.WriteLine("Camere Adaugate : {0} ", rooms.Keys.Count.ToString());
 
                 string n = Console.ReadLine().ToUpper();
-
-
-
 
                 switch (n)
                 {
@@ -212,10 +206,14 @@ namespace tra
 
                     case "L":
 
-
                         JsonRead();
-
                         break;
+
+                    case "X":
+                        Console.WriteLine("Iesire din aplicatie");
+                        Environment.Exit(0);
+                        break;
+
 
                     default:
                         Console.WriteLine("Comanda introdusa nu se afla in lista.");
@@ -240,12 +238,10 @@ namespace tra
 
         public string ValNumber(string str)
         {
-
             string input;
 
             do
             {
-
                 Console.WriteLine(str);
                 input = Console.ReadLine();
 
@@ -262,8 +258,7 @@ namespace tra
 
             Room newRoom = new Room();
 
-            // x++;
-            // newRoom.index = x;
+           
             if (rooms.Keys.Count.ToString() == "0")
             {
                 newRoom.index = 1;
@@ -321,7 +316,6 @@ namespace tra
                 // Console.WriteLine("nume : ");
 
                 return false;
-
             }
 
             return true;
@@ -332,7 +326,7 @@ namespace tra
             float inp;
             if (input.Count() == 0)
             {
-                Console.WriteLine(" Adauga date.");
+                Console.WriteLine(" Adauga date, campul nu poate fi gol");
                 return false;
             }
            
@@ -368,7 +362,7 @@ namespace tra
             foreach (var room in rooms)
             {
 
-                Console.WriteLine(" KEY ={0} ||index = {1}, Nume = {2}, LocationX = {3}", room.Key, room.Value.index, room.Value.Name, room.Value.LocationX);
+                Console.WriteLine($" KEY ={room.Key} || index = {room.Value.index}, Nume = {room.Value.Name}, LocationX = {room.Value.LocationX} ,LocationY = {room.Value.LocationY} , LengthX= {room.Value.LengthX} , LengthY= {room.Value.LengthY} ");
 
             }
 
@@ -383,7 +377,7 @@ namespace tra
             var indexSearchedVal = rooms.Where(r => r.Key.Equals(noIndex));
             foreach (var room in indexSearchedVal)
             {
-                Console.WriteLine("ID = {0}, Nume = {1}", room.Key, room.Value.Name);
+                Console.WriteLine($"ID = {room.Key}, Nume = {room.Value.Name}");
                 Console.WriteLine();
             }
         }
@@ -396,7 +390,7 @@ namespace tra
 
             foreach (var room in filteredRooms)
             {
-                Console.WriteLine("ID = {0}, Nume = {1}", room.Key, room.Value.Name);
+                Console.WriteLine($"ID = {room.Key}, Nume = {room.Value.Name}");
             }
 
         }
@@ -411,7 +405,7 @@ namespace tra
 
             foreach (var room in orderByNamelst)
             {
-                Console.WriteLine("ID = {0}, Nume = {1}", room.Key, room.Value.Name);
+                Console.WriteLine($"ID = {room.Key}, Nume = {room.Value.Name}");
             }
         }
 
@@ -453,7 +447,6 @@ namespace tra
             {
                 Console.WriteLine($"nu exista intrari pt indexul { indexDelete}");
             }
-            
         }
 
         public void DeleteAll()
@@ -475,7 +468,6 @@ namespace tra
             }
         }
 
-
         public void JsonRead()
         {
            // JsonSerializer serializer = new JsonSerializer();
@@ -489,12 +481,8 @@ namespace tra
 
                     rooms = JsonConvert.DeserializeObject<Dictionary<int, Room>>(txt);
 
-
-
                 }
             }
-
-
         }
     }
 }
