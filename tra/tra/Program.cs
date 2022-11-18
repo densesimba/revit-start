@@ -21,20 +21,7 @@ namespace tra
         {
 
             Program p = new Program();
-            /*
-            "C. Creare incapere" -
-            "A. Afisare incaperi, in ordinea introducerii" -
-           "O. Afisare incaperi, ordonate dupa nume" -
-           "N. Afisare o incapere cu un anumit index" -
-            "F. Cautare si afisare incaperi cu un anumit nume" -
-           "U. Actualizare incapere de la un anumit index" -
-           "S. Stergere incapere de la un anumit index" -
-           "D. Stergere totala si reinitializare dictionar" -
-           "I. Info cale aplicatie, numar elemente dictionar, indexul ultimei incaperi" -
-           "L. Incarcare dictionar din fisier .json" -
-           "W. Salvare dictionar intr-un fisier .json" -
-           "X. Iesire din aplicatie" -
-            */
+           
 
             p.Meniu();
 
