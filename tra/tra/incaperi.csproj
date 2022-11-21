@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{48649F51-EFC9-4B3F-9DA5-17861FAE4326}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>tra</RootNamespace>
-    <AssemblyName>tra</AssemblyName>
+    <RootNamespace>denis.practica.dictionarincaperi</RootNamespace>
+    <AssemblyName>ProiectIncaperi</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

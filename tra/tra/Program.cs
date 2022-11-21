@@ -1,97 +1,86 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using Newtonsoft.Json;
 using System.Globalization;
-using denis.practica.dictionarincaperi.rooms;
+using System.IO;
+using System.Linq;
 
 namespace denis.practica.dictionarincaperi
 {
-    class Program
+    public class Program
     {
-        Dictionary<int, Room> rooms = new Dictionary<int, Room>();
-        //string pathJson = @"D:\Deni\ecfsrc\revit-start\tra\tra\json.json";
-
+        private Dictionary<int, Room> rooms = new Dictionary<int, Room>();
+        private static string jsonFilepath = "rooms.json";
 
         static void Main(string[] args)
         {
+            if (args.Length == 1)
+            {
+                jsonFilepath = args[0];
+            }
+
             Program p = new Program();
             p.Meniu();
         }
 
         public void Meniu()
         {
-
-            string input;
+            string input = "";
             while (true)
             {
-                Console.WriteLine("\n\nC . Creare incapere");
-                Console.WriteLine("A . Afisare incaperi, in ordinea introducerii");
+                Console.Clear();
+                Console.WriteLine("C - Creare incapere");
+                Console.WriteLine("A - Afisare incaperi, in ordinea introducerii");
                 Console.WriteLine("O - Afisare incaperi, ordonate dupa nume");
                 Console.WriteLine("N - Afisare o incapere cu un anumit index");
                 Console.WriteLine("F - Cautare si afisare incaperi cu un anumit nume");
                 Console.WriteLine("U - Actualizare incapere de la un anumit index");
-                Console.WriteLine("S -  Stergere incapere de la un anumit index");
+                Console.WriteLine("S - Stergere incapere de la un anumit index");
                 Console.WriteLine("D - Stergere totala si reinitializare dictionar");
                 Console.WriteLine("I - Info cale aplicatie, numar elemente dictionar, indexul ultimei incaperi ");
-                Console.WriteLine("W -  Salvare dictionar intr-un fisier .json");
-                Console.WriteLine("L - Incarcare dictionar din .json\n\n");
-
-                //  Console.WriteLine("Camere Adaugate : {0} ", rooms.Keys.Count.ToString());
+                Console.WriteLine("W - Salvare dictionar intr-un fisier .json");
+                Console.WriteLine("L - Incarcare dictionar din .json");
+                Console.WriteLine("X - Iesire");
 
                 string userOption = Console.ReadLine().ToUpper();
 
                 switch (userOption)
                 {
                     case "C":
-
                         Console.WriteLine("C. Creare incapere");
-
                         CreateRoom();
-
                         break;
 
                     case "O":
-
-
                         if (rooms.Keys.Count == 0)
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
-
                         }
                         else
                         {
                             Console.WriteLine("Afisare incaperi, ordonate dupa nume");
                             OrderByName();
-
                         }
                         break;
 
-
                     case "N":
-
                         if (rooms.Keys.Count == 0)
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
-
                         }
                         else
                         {
-                            Console.WriteLine("N- Afisare o incapere cu un anumit index");
+                            Console.WriteLine("Afisare o incapere cu un anumit index");
                             Console.WriteLine("Index:");
                             input = Console.ReadLine();
                             IsNumberValid(input);
-                            int r;
-                            int.TryParse(input, out int inputInt);
+                            int.TryParse(input, out int iInput);
 
-                            SearchByIndex(inputInt);
-
+                            SearchByIndex(iInput);
                         }
                         break;
 
                     case "A":
-
                         if (rooms.Keys.Count == 0)
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
@@ -105,14 +94,13 @@ namespace denis.practica.dictionarincaperi
                         break;
 
                     case "F":
-
                         if (rooms.Keys.Count == 0)
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
                         }
                         else
                         {
-                            Console.WriteLine("F - Cautare si afisare incaperi cu un anumit nume");
+                            Console.WriteLine("Cautare si afisare incaperi cu un anumit nume");
                             Console.WriteLine("Nume:");
                             string name = Console.ReadLine();
                             SearchbyName(name);
@@ -120,7 +108,6 @@ namespace denis.practica.dictionarincaperi
                         break;
 
                     case "U":
-
                         if (rooms.Keys.Count == 0)
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
@@ -129,19 +116,17 @@ namespace denis.practica.dictionarincaperi
                         {
                             Console.WriteLine("Actualizare incapere de la un anumit index");
 
-                            // int indexToUpdate = Convert.ToInt32(Console.ReadLine());
                             input = Console.ReadLine();
                             IsNumberValid(input);
 
-                            int.TryParse(input, out int indexToUpdate);
-
-                            UpdateRoomByIndex(indexToUpdate);
-
+                            if (int.TryParse(input, out int indexToUpdate))
+                            {
+                                UpdateRoomByIndex(indexToUpdate);
+                            }
                         }
                         break;
 
                     case "S":
-
                         if (rooms.Keys.Count == 0)
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
@@ -149,23 +134,29 @@ namespace denis.practica.dictionarincaperi
                         else
                         {
                             Console.WriteLine("Stergere incapere de la un anumit index");
-                            // int indexToDelete = Convert.ToInt32(Console.ReadLine());
                             input = Console.ReadLine();
-                            IsNumberValid(input);
-
-                            int.TryParse(input, out int indexToUpdate);
-
-                            UpdateRoomByIndex(indexToUpdate);
-                            DeleteByIndex(indexToUpdate);
+                            if (int.TryParse(input, out int indexToUpdate))
+                            {
+                                if (rooms.ContainsKey(indexToUpdate))
+                                {
+                                    DeleteByIndex(indexToUpdate);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Nu exista o incapere la acest index!");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nu este numar intreg!");
+                            }
                         }
                         break;
 
                     case "D":
-
                         if (rooms.Keys.Count == 0)
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
-
                         }
                         else
                         {
@@ -174,18 +165,14 @@ namespace denis.practica.dictionarincaperi
                         }
                         break;
 
-
                     case "I":
-
                         Console.WriteLine("I - Info cale aplicatie, numar elemente dictionar, indexul ultimei incaperi ");
                         var path = Directory.GetCurrentDirectory();
                         Console.WriteLine(path);
 
-
                         if (!rooms.Any())
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
-
                         }
                         else
                         {
@@ -193,14 +180,10 @@ namespace denis.practica.dictionarincaperi
                             Console.WriteLine("Nr elemente dictionar : ", RoomCount);
                             int lastIndexKey = rooms.Keys.Last();
                             Console.WriteLine(lastIndexKey);
-
                         }
                         break;
 
                     case "W":
-
-                        Console.WriteLine("W. Salvare dictionar intr-un fisier .json");
-
                         if (!rooms.Any())
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
@@ -209,13 +192,13 @@ namespace denis.practica.dictionarincaperi
                         else
                         {
                             CreateJson();
-
+                            Console.WriteLine($"Incaperile au fost salvate in fisierul {jsonFilepath}");
                         }
                         break;
 
                     case "L":
-
                         JsonRead();
+                        Console.WriteLine($"Incaperile au fost incarcate din fisierul {jsonFilepath}");
                         break;
 
                     case "X":
@@ -223,11 +206,12 @@ namespace denis.practica.dictionarincaperi
                         Environment.Exit(0);
                         break;
 
-
                     default:
                         Console.WriteLine("Comanda introdusa nu se afla in lista.");
                         continue;
                 }
+
+                _ = Console.ReadKey(true);
             }
         }
 
@@ -262,12 +246,8 @@ namespace denis.practica.dictionarincaperi
 
         public void CreateRoom()
         {
-
             string input;
-
             Room newRoom = new Room();
-
-
 
             if (rooms.Keys.Count > 0)
             {
@@ -286,11 +266,7 @@ namespace denis.practica.dictionarincaperi
             input = ValNumber("LengthY");
             newRoom.LengthY = float.Parse(input, CultureInfo.InvariantCulture.NumberFormat);
 
-
             rooms.Add(newRoom.index, newRoom);
-
-            string jsonOutput = JsonConvert.SerializeObject(newRoom);
-
             Console.WriteLine("vrei sa mai adaugi o incapere? Y/N");
 
             ConsoleKeyInfo ck;
@@ -300,13 +276,7 @@ namespace denis.practica.dictionarincaperi
                 ck = Console.ReadKey();
                 if (ck.Key == ConsoleKey.Y)
                 {
-
                     CreateRoom();
-                }
-                else if (ck.Key == ConsoleKey.N)
-                {
-                    Meniu();
-
                 }
                 Console.WriteLine();
             }
@@ -317,7 +287,6 @@ namespace denis.practica.dictionarincaperi
             if (input.All(char.IsDigit))
             {
                 Console.WriteLine("Valoarea introdusa nu trebuie sa fie nula sau sa contina DOAR cifre");
-                // Console.WriteLine("nume : ");
 
                 return false;
             }
@@ -325,36 +294,34 @@ namespace denis.practica.dictionarincaperi
             return true;
         }
 
-        public bool IsNumberValid(string input)
+        public bool IsNumberValid(string s)
         {
-            float inp;
-            if (input.Count() == 0)
+            float number;
+            if (s.Count() == 0)
             {
                 Console.WriteLine(" Adauga date, campul nu poate fi gol");
                 return false;
             }
 
-            else if (float.TryParse(input, out inp))
+            else if (float.TryParse(s, out number))
             {
 
-                if (inp < 0)
+                if (number < 0)
                 {
                     Console.WriteLine("Valoarea nu poate fi mai mica ca 0");
                     return false;
                 }
-                else if (input.Count() >= 6)
+                else if (s.Length >= 6)
                 {
                     Console.WriteLine("Valoarea nu poate fi mai mare de 6 cifre");
                     return false;
                 }
 
                 return true;
-
             }
             else
             {
                 Console.WriteLine("introdu o valoare de tip float");
-
             }
 
             return false;
@@ -362,11 +329,14 @@ namespace denis.practica.dictionarincaperi
 
         public void ShowRooms()
         {
-            Console.WriteLine("-----------------------Dict______________");
+            string s = "Dict";
+            int consoleWidth = (Console.WindowWidth - s.Length) / 2;
+            string dash = new string('-', consoleWidth);
+            s = $"{dash}{s}{dash}";
+
+            Console.WriteLine(s);
             foreach (var room in rooms)
             {
-
-                //  Console.WriteLine($" KEY ={room.Key} || index = {room.Value.index}, Nume = {room.Value.Name}, LocationX = {room.Value.LocationX} ,LocationY = {room.Value.LocationY} , LengthX= {room.Value.LengthX} , LengthY= {room.Value.LengthY} ");
                 Console.WriteLine(room);
             }
 
@@ -375,13 +345,11 @@ namespace denis.practica.dictionarincaperi
 
         public void SearchByIndex(int noIndex)
         {
-
             Console.WriteLine("------------------------Afisare dupa index_____________");
 
             var indexSearchedVal = rooms.Where(r => r.Key.Equals(noIndex));
             foreach (var room in indexSearchedVal)
             {
-                // Console.WriteLine($"ID = {room.Key}, Nume = {room.Value.Name}");
                 Console.WriteLine(room);
                 Console.WriteLine();
             }
@@ -395,23 +363,17 @@ namespace denis.practica.dictionarincaperi
 
             foreach (var room in filteredRooms)
             {
-                // Console.WriteLine($"ID = {room.Key}, Nume = {room.Value.Name}");
                 Console.WriteLine(room);
             }
-
         }
 
         public void OrderByName()
         {
-
             Console.WriteLine("------------------------Afisare dupa nume ordonate______________");
-
-
             var orderByNamelst = rooms.OrderBy(r => r.Value.Name);
 
             foreach (var room in orderByNamelst)
             {
-                // Console.WriteLine($"ID = {room.Key}, Nume = {room.Value.Name}");
                 Console.WriteLine(room);
             }
         }
@@ -446,7 +408,6 @@ namespace denis.practica.dictionarincaperi
         {
             var indexSearchedVal = rooms.Where(r => r.Key == indexDelete);
 
-
             if (rooms.Remove(indexDelete))
             {
                 Console.WriteLine($"incaperea de la indexul { indexDelete} a fost stearsa cu success!");
@@ -464,10 +425,12 @@ namespace denis.practica.dictionarincaperi
 
         public void CreateJson()
         {
-            JsonSerializer serializer = new JsonSerializer();
-            serializer.NullValueHandling = NullValueHandling.Ignore;
+            JsonSerializer serializer = new JsonSerializer
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            };
 
-            using (StreamWriter sw = new StreamWriter("rooms.json"))
+            using (StreamWriter sw = new StreamWriter(jsonFilepath))
             {
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
@@ -478,25 +441,12 @@ namespace denis.practica.dictionarincaperi
 
         public void JsonRead()
         {
-            // JsonSerializer serializer = new JsonSerializer();
-
-
-
-
-
-            if (File.Exists("rooms.json"))
+            if (File.Exists(jsonFilepath))
             {
-
-                string txt = File.ReadAllText("rooms.json");
+                string txt = File.ReadAllText(jsonFilepath);
 
                 rooms = JsonConvert.DeserializeObject<Dictionary<int, Room>>(txt);
-
-
             }
-
         }
     }
 }
-
-
-
