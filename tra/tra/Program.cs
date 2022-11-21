@@ -1,34 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
-
 using System.Globalization;
+using denis.practica.dictionarincaperi.rooms;
 
-namespace tra
+namespace denis.practica.dictionarincaperi
 {
     class Program
     {
         Dictionary<int, Room> rooms = new Dictionary<int, Room>();
-        string pathJson = @"D:\Deni\ecfsrc\revit-start\tra\tra\json.json";
+        //string pathJson = @"D:\Deni\ecfsrc\revit-start\tra\tra\json.json";
 
 
         static void Main(string[] args)
         {
             Program p = new Program();
-           
             p.Meniu();
-
         }
 
         public void Meniu()
         {
-            Console.WriteLine("");
 
+            string input;
             while (true)
             {
                 Console.WriteLine("\n\nC . Creare incapere");
@@ -37,16 +32,17 @@ namespace tra
                 Console.WriteLine("N - Afisare o incapere cu un anumit index");
                 Console.WriteLine("F - Cautare si afisare incaperi cu un anumit nume");
                 Console.WriteLine("U - Actualizare incapere de la un anumit index");
-                Console.WriteLine("S. Stergere incapere de la un anumit index");
-                Console.WriteLine("D. Stergere totala si reinitializare dictionar");
+                Console.WriteLine("S -  Stergere incapere de la un anumit index");
+                Console.WriteLine("D - Stergere totala si reinitializare dictionar");
                 Console.WriteLine("I - Info cale aplicatie, numar elemente dictionar, indexul ultimei incaperi ");
-                Console.WriteLine("W. Salvare dictionar intr-un fisier .json");
-                Console.WriteLine("L.Incarcare dictionar din .json\n\n");
-                Console.WriteLine("Camere Adaugate : {0} ", rooms.Keys.Count.ToString());
+                Console.WriteLine("W -  Salvare dictionar intr-un fisier .json");
+                Console.WriteLine("L - Incarcare dictionar din .json\n\n");
 
-                string n = Console.ReadLine().ToUpper();
+                //  Console.WriteLine("Camere Adaugate : {0} ", rooms.Keys.Count.ToString());
 
-                switch (n)
+                string userOption = Console.ReadLine().ToUpper();
+
+                switch (userOption)
                 {
                     case "C":
 
@@ -59,58 +55,60 @@ namespace tra
                     case "O":
 
 
-                        if (rooms.Keys.Count.ToString() == "0")
+                        if (rooms.Keys.Count == 0)
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
-                            break;
+
                         }
                         else
                         {
                             Console.WriteLine("Afisare incaperi, ordonate dupa nume");
                             OrderByName();
-                            break;
+
                         }
+                        break;
 
 
                     case "N":
 
-                        if (rooms.Keys.Count.ToString() == "0")
+                        if (rooms.Keys.Count == 0)
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
-                            break;
+
                         }
                         else
                         {
                             Console.WriteLine("N- Afisare o incapere cu un anumit index");
                             Console.WriteLine("Index:");
-                            int nrIndex = Convert.ToInt32(Console.ReadLine());
+                            input = Console.ReadLine();
+                            IsNumberValid(input);
+                            int r;
+                            int.TryParse(input, out int inputInt);
 
-                            SearchByIndex(nrIndex);
+                            SearchByIndex(inputInt);
 
-                            break;
                         }
+                        break;
 
                     case "A":
 
-                        if (rooms.Keys.Count.ToString() == "0")
+                        if (rooms.Keys.Count == 0)
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
-                            break;
                         }
                         else
                         {
                             Console.WriteLine("\n\nA. Afisare incaperi, in ordinea introducerii");
                             ShowRooms();
-
-                            break;
                         }
+
+                        break;
 
                     case "F":
 
-                        if (rooms.Keys.Count.ToString() == "0")
+                        if (rooms.Keys.Count == 0)
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
-                            break;
                         }
                         else
                         {
@@ -118,91 +116,102 @@ namespace tra
                             Console.WriteLine("Nume:");
                             string name = Console.ReadLine();
                             SearchbyName(name);
-                            break;
                         }
+                        break;
 
                     case "U":
 
-                        if (rooms.Keys.Count.ToString() == "0")
+                        if (rooms.Keys.Count == 0)
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
-                            break;
                         }
                         else
                         {
                             Console.WriteLine("Actualizare incapere de la un anumit index");
 
-                            int indexToUpdate = Convert.ToInt32(Console.ReadLine());
+                            // int indexToUpdate = Convert.ToInt32(Console.ReadLine());
+                            input = Console.ReadLine();
+                            IsNumberValid(input);
+
+                            int.TryParse(input, out int indexToUpdate);
+
                             UpdateRoomByIndex(indexToUpdate);
-                            break;
+
                         }
+                        break;
 
                     case "S":
 
-                        if (rooms.Keys.Count.ToString() == "0")
+                        if (rooms.Keys.Count == 0)
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
-                            break;
                         }
                         else
                         {
                             Console.WriteLine("Stergere incapere de la un anumit index");
-                            int indexToDelete = Convert.ToInt32(Console.ReadLine());
-                            DeleteByIndex(indexToDelete);
-                            break;
+                            // int indexToDelete = Convert.ToInt32(Console.ReadLine());
+                            input = Console.ReadLine();
+                            IsNumberValid(input);
+
+                            int.TryParse(input, out int indexToUpdate);
+
+                            UpdateRoomByIndex(indexToUpdate);
+                            DeleteByIndex(indexToUpdate);
                         }
+                        break;
 
                     case "D":
 
-                        if (rooms.Keys.Count.ToString() == "0")
+                        if (rooms.Keys.Count == 0)
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
-                            break;
+
                         }
                         else
                         {
                             Console.WriteLine("Stergere totala");
                             DeleteAll();
-                            break;
                         }
+                        break;
 
 
                     case "I":
 
                         Console.WriteLine("I - Info cale aplicatie, numar elemente dictionar, indexul ultimei incaperi ");
-                        var path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+                        var path = Directory.GetCurrentDirectory();
                         Console.WriteLine(path);
 
-                        int RoomCount = rooms.Count;
-                        Console.WriteLine("Nr elemente dictionar : ", RoomCount);
 
-                        if (rooms.Keys.Count.ToString() == "0")
+                        if (!rooms.Any())
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
-                            break;
+
                         }
                         else
                         {
+                            int RoomCount = rooms.Count;
+                            Console.WriteLine("Nr elemente dictionar : ", RoomCount);
                             int lastIndexKey = rooms.Keys.Last();
                             Console.WriteLine(lastIndexKey);
 
-                            break;
                         }
+                        break;
 
                     case "W":
 
                         Console.WriteLine("W. Salvare dictionar intr-un fisier .json");
 
-                        if (rooms.Keys.Count.ToString() == "0")
+                        if (!rooms.Any())
                         {
                             Console.WriteLine("NU sunt intrari in dictionar \n");
-                            break;
+
                         }
                         else
                         {
                             CreateJson();
-                            break;
+
                         }
+                        break;
 
                     case "L":
 
@@ -231,7 +240,7 @@ namespace tra
                 input = Console.ReadLine();
 
             }
-            while (!ValidateName(input));
+            while (!IsNameValid(input));
 
             return input;
         }
@@ -246,7 +255,7 @@ namespace tra
                 input = Console.ReadLine();
 
             }
-            while (!ValidateNumber(input));
+            while (!IsNumberValid(input));
 
             return input;
         }
@@ -258,17 +267,12 @@ namespace tra
 
             Room newRoom = new Room();
 
-           
-            if (rooms.Keys.Count.ToString() == "0")
-            {
-                newRoom.index = 1;
-            }
-            else
+
+
+            if (rooms.Keys.Count > 0)
             {
                 newRoom.index = rooms.Keys.Max() + 1;
             }
-
-            Console.WriteLine("Id- ul este {0} :", newRoom.index);
 
             input = ValName("Name");
             newRoom.Name = input;
@@ -308,7 +312,7 @@ namespace tra
             }
         }
 
-        public bool ValidateName(string input)
+        public bool IsNameValid(string input)
         {
             if (input.All(char.IsDigit))
             {
@@ -321,7 +325,7 @@ namespace tra
             return true;
         }
 
-        public bool ValidateNumber(string input)
+        public bool IsNumberValid(string input)
         {
             float inp;
             if (input.Count() == 0)
@@ -329,11 +333,11 @@ namespace tra
                 Console.WriteLine(" Adauga date, campul nu poate fi gol");
                 return false;
             }
-           
+
             else if (float.TryParse(input, out inp))
             {
-               
-                 if (inp < 0)
+
+                if (inp < 0)
                 {
                     Console.WriteLine("Valoarea nu poate fi mai mica ca 0");
                     return false;
@@ -362,8 +366,8 @@ namespace tra
             foreach (var room in rooms)
             {
 
-                Console.WriteLine($" KEY ={room.Key} || index = {room.Value.index}, Nume = {room.Value.Name}, LocationX = {room.Value.LocationX} ,LocationY = {room.Value.LocationY} , LengthX= {room.Value.LengthX} , LengthY= {room.Value.LengthY} ");
-
+                //  Console.WriteLine($" KEY ={room.Key} || index = {room.Value.index}, Nume = {room.Value.Name}, LocationX = {room.Value.LocationX} ,LocationY = {room.Value.LocationY} , LengthX= {room.Value.LengthX} , LengthY= {room.Value.LengthY} ");
+                Console.WriteLine(room);
             }
 
             Console.WriteLine("\n");
@@ -377,7 +381,8 @@ namespace tra
             var indexSearchedVal = rooms.Where(r => r.Key.Equals(noIndex));
             foreach (var room in indexSearchedVal)
             {
-                Console.WriteLine($"ID = {room.Key}, Nume = {room.Value.Name}");
+                // Console.WriteLine($"ID = {room.Key}, Nume = {room.Value.Name}");
+                Console.WriteLine(room);
                 Console.WriteLine();
             }
         }
@@ -390,7 +395,8 @@ namespace tra
 
             foreach (var room in filteredRooms)
             {
-                Console.WriteLine($"ID = {room.Key}, Nume = {room.Value.Name}");
+                // Console.WriteLine($"ID = {room.Key}, Nume = {room.Value.Name}");
+                Console.WriteLine(room);
             }
 
         }
@@ -405,7 +411,8 @@ namespace tra
 
             foreach (var room in orderByNamelst)
             {
-                Console.WriteLine($"ID = {room.Key}, Nume = {room.Value.Name}");
+                // Console.WriteLine($"ID = {room.Key}, Nume = {room.Value.Name}");
+                Console.WriteLine(room);
             }
         }
 
@@ -430,8 +437,9 @@ namespace tra
             var indexSearchedVal = rooms.Where(r => r.Key == indexUpdate);
 
             if (indexSearchedVal.Any())
+            {
                 rooms[indexUpdate] = newRoom;
-
+            }
         }
 
         public void DeleteByIndex(int indexDelete)
@@ -459,7 +467,7 @@ namespace tra
             JsonSerializer serializer = new JsonSerializer();
             serializer.NullValueHandling = NullValueHandling.Ignore;
 
-            using (StreamWriter sw = new StreamWriter(pathJson))
+            using (StreamWriter sw = new StreamWriter("rooms.json"))
             {
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
@@ -470,19 +478,22 @@ namespace tra
 
         public void JsonRead()
         {
-           // JsonSerializer serializer = new JsonSerializer();
+            // JsonSerializer serializer = new JsonSerializer();
 
-            using (StreamReader r = new StreamReader(pathJson))
+
+
+
+
+            if (File.Exists("rooms.json"))
             {
-                if (File.Exists(pathJson))
-                {
 
-                    string txt = File.ReadAllText(pathJson);
+                string txt = File.ReadAllText("rooms.json");
 
-                    rooms = JsonConvert.DeserializeObject<Dictionary<int, Room>>(txt);
+                rooms = JsonConvert.DeserializeObject<Dictionary<int, Room>>(txt);
 
-                }
+
             }
+
         }
     }
 }
