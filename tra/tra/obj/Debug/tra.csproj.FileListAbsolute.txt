@@ -15,3 +15,13 @@ D:\Deni\ecfsrc\revit-start\tra\tra\bin\Debug\Newtonsoft.Json.dll
 D:\Deni\ecfsrc\revit-start\tra\tra\bin\Debug\Newtonsoft.Json.xml
 D:\Deni\ecfsrc\revit-start\tra\tra\obj\Debug\tra.csproj.CopyComplete
 D:\Deni\ecfsrc\revit-start\tra\tra\obj\Debug\tra.csproj.AssemblyReference.cache
+E:\ecfsrc\revit-start\tra\tra\bin\Debug\tra.exe.config
+E:\ecfsrc\revit-start\tra\tra\bin\Debug\tra.exe
+E:\ecfsrc\revit-start\tra\tra\bin\Debug\tra.pdb
+E:\ecfsrc\revit-start\tra\tra\bin\Debug\Newtonsoft.Json.dll
+E:\ecfsrc\revit-start\tra\tra\bin\Debug\Newtonsoft.Json.xml
+E:\ecfsrc\revit-start\tra\tra\obj\Debug\tra.csproj.AssemblyReference.cache
+E:\ecfsrc\revit-start\tra\tra\obj\Debug\tra.csproj.CoreCompileInputs.cache
+E:\ecfsrc\revit-start\tra\tra\obj\Debug\tra.csproj.CopyComplete
+E:\ecfsrc\revit-start\tra\tra\obj\Debug\tra.exe
+E:\ecfsrc\revit-start\tra\tra\obj\Debug\tra.pdb

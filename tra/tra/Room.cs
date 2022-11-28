@@ -17,11 +17,14 @@ namespace tra
         public float LengthY { get; set; }
         public string Name { get; set; }
 
+        public virtual string Show()
+        {
+          
 
-        
+            return $"nume : {Name} cu locatia : {LocationX} si {LocationY} dar si lunjimi de  {LengthX} x {LengthY}";
+        }
 
-
-
-       
     }
+
+   
 }

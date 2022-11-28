@@ -73,6 +73,8 @@ namespace tra
                         else
                         {
                             Console.WriteLine("Afisare incaperi, ordonate dupa nume");
+
+                            
                             OrderByName();
                             break;
                         }
@@ -414,9 +416,14 @@ namespace tra
 
             var orderByNamelst = rooms.OrderBy(r => r.Value.Name);
 
+
+            Room ro = new Room();
+
+
+           
             foreach (var room in orderByNamelst)
             {
-                Console.WriteLine("ID = {0}, Nume = {1}", room.Key, room.Value.Name);
+                Console.WriteLine(ro.Show());
             }
         }
 
