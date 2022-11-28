@@ -1,1 +1,0 @@
-{"1":{"index":1,"LocationX":345.0,"LocationY":345.0,"LengthX":345.0,"LengthY":345.0,"Name":"da"},"2":{"index":2,"LocationX":345345.0,"LocationY":3453.0,"LengthX":345.0,"LengthY":345.0,"Name":"dfff"}}

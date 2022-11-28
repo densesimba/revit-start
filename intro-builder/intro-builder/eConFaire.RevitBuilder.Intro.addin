@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Application intro-builder</Name>
+    <Assembly>eConFaire.RevitBuilder.Intro.dll</Assembly>
+    <FullClassName>eConFaire.RevitBuilder.Intro.App</FullClassName>
+    <ClientId>f4f07987-2657-4a8c-a6b8-8a92770ff1be</ClientId>
+    <VendorId>www.econfaire.ro</VendorId>
+    <VendorDescription>econfaire.ro</VendorDescription>
+  </AddIn>
+</RevitAddIns>

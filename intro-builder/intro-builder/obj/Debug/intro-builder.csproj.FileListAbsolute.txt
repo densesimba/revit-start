@@ -1,0 +1,12 @@
+C:\Users\deniss\source\repos\intro-builder\intro-builder\obj\Debug\intro-builder.csproj.CoreCompileInputs.cache
+C:\Users\deniss\source\repos\intro-builder\intro-builder\bin\Debug\eConFaire.RevitBuilder.Intro.dll
+C:\Users\deniss\source\repos\intro-builder\intro-builder\bin\Debug\eConFaire.RevitBuilder.Intro.pdb
+C:\Users\deniss\source\repos\intro-builder\intro-builder\obj\Debug\eConFaire.RevitBuilder.Intro.dll
+C:\Users\deniss\source\repos\intro-builder\intro-builder\obj\Debug\eConFaire.RevitBuilder.Intro.pdb
+C:\Users\deniss\source\repos\intro-builder\intro-builder\obj\Debug\intro-builder.csproj.AssemblyReference.cache
+E:\ecfsrc\revit-start\intro-builder\intro-builder\bin\Debug\eConFaire.RevitBuilder.Intro.dll
+E:\ecfsrc\revit-start\intro-builder\intro-builder\bin\Debug\eConFaire.RevitBuilder.Intro.pdb
+E:\ecfsrc\revit-start\intro-builder\intro-builder\obj\Debug\intro-builder.csproj.AssemblyReference.cache
+E:\ecfsrc\revit-start\intro-builder\intro-builder\obj\Debug\intro-builder.csproj.CoreCompileInputs.cache
+E:\ecfsrc\revit-start\intro-builder\intro-builder\obj\Debug\eConFaire.RevitBuilder.Intro.dll
+E:\ecfsrc\revit-start\intro-builder\intro-builder\obj\Debug\eConFaire.RevitBuilder.Intro.pdb
