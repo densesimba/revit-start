@@ -10,3 +10,7 @@ E:\ecfsrc\revit-start\intro-builder\intro-builder\obj\Debug\intro-builder.csproj
 E:\ecfsrc\revit-start\intro-builder\intro-builder\obj\Debug\intro-builder.csproj.CoreCompileInputs.cache
 E:\ecfsrc\revit-start\intro-builder\intro-builder\obj\Debug\eConFaire.RevitBuilder.Intro.dll
 E:\ecfsrc\revit-start\intro-builder\intro-builder\obj\Debug\eConFaire.RevitBuilder.Intro.pdb
+E:\ecfsrc\revit-start\intro-builder\intro-builder\obj\Debug\intro-builder.csproj.GenerateResource.cache
+E:\ecfsrc\revit-start\intro-builder\intro-builder\obj\Debug\eConFaire.RevitBuilder.Intro.FormWalls.resources
+E:\ecfsrc\revit-start\intro-builder\intro-builder\obj\Debug\eConFaire.RevitBuilder.Intro.UI.FormRoof.resources
+E:\ecfsrc\revit-start\intro-builder\intro-builder\obj\Debug\eConFaire.RevitBuilder.Intro.UI.RoomsForm.resources

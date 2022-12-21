@@ -58,17 +58,55 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Command.cs" />
-    <Compile Include="UI\Form1.cs">
+    <Compile Include="Model\InputLine.cs" />
+    <Compile Include="Model\Room.cs" />
+    <Compile Include="UI\CreateCeiling.cs" />
+    <Compile Include="UI\CreateDoorsWindows.cs" />
+    <Compile Include="UI\CreateFlatRoof.cs" />
+    <Compile Include="UI\CreateFloor.cs" />
+    <Compile Include="UI\CreateRoof.cs" />
+    <Compile Include="UI\CreateWalls.cs" />
+    <Compile Include="UI\CreateFinish.cs" />
+    <Compile Include="UI\FormRoof.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="UI\FormRoof.Designer.cs">
+      <DependentUpon>FormRoof.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormWalls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormWalls.Designer.cs">
+      <DependentUpon>FormWalls.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Join.cs" />
     <Compile Include="UI\RevitBuilderUI.cs" />
+    <Compile Include="UI\RoomsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\RoomsForm.Designer.cs">
+      <DependentUpon>RoomsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Extensions.cs" />
+    <Compile Include="Utils\Helpers.cs" />
+    <Compile Include="Utils\JoinPair.cs" />
+    <Compile Include="Utils\UnitConverter.cs" />
+    <Compile Include="Utils\Validations.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="eConFaire.RevitBuilder.Intro.addin" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\FormRoof.resx">
+      <DependentUpon>FormRoof.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormWalls.resx">
+      <DependentUpon>FormWalls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RoomsForm.resx">
+      <DependentUpon>RoomsForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

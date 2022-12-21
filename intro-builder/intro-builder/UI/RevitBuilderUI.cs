@@ -1,11 +1,6 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace eConFaire.RevitBuilder.Intro.UI
 {
@@ -18,23 +13,23 @@ namespace eConFaire.RevitBuilder.Intro.UI
             UIApplication uiapp = commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document document = uidoc.Document;
-          
-            TaskDialog.Show("Sall", "Hello world!");
-            Form1 fr = new Form1();
-            fr.ShowDialog();
             return Result.Succeeded;
         }
-
         public static void AddUiButtons(UIControlledApplication app)
         {
             AddNewTab("Intro", app);
-            RibbonPanel panel = AddNewPanel("Intro","Panelul Denisei",app);
+            RibbonPanel panel = AddNewPanel("Intro", "Panelul Denisei", app);
 
-            _ = AddNewButton("Apasa ", typeof(RevitBuilderUI).FullName,panel );
-
+            _ = AddNewButton("Creare pereți", typeof(CreateWalls).FullName, panel);
+            _ = AddNewButton("creare finisaj", typeof(CreateFinish).FullName, panel);
+            _ = AddNewButton("Creare podea", typeof(CreateFloor).FullName, panel);
+            _ = AddNewButton("Join pereți&finisaje", typeof(Join).FullName, panel);
+            _ = AddNewButton("Creare uși/ferestre", typeof(CreateDoorsWindows).FullName, panel);
+            _ = AddNewButton("Creare tavan", typeof(CreateCeiling).FullName, panel);
+            _ = AddNewButton("Creare șarpantă", typeof(CreateRoof).FullName, panel);
+            _ = AddNewButton("Creare terasă", typeof(CreateFlatRoof).FullName, panel);
 
         }
-
         /// <summary>
         /// Add a new Tab in Revit menu.
         /// </summary>
@@ -53,13 +48,11 @@ namespace eConFaire.RevitBuilder.Intro.UI
         }
         public static RibbonPanel AddNewPanel(string tabName, string panelName, UIControlledApplication app)
         {
-           userAddinDirectory = app.ControlledApplication.CurrentUserAddinsLocation;
+            userAddinDirectory = app.ControlledApplication.CurrentUserAddinsLocation;
             RibbonPanel panel = app.CreateRibbonPanel(tabName, panelName);
 
             return panel;
         }
-
-
-
     }
 }
+
